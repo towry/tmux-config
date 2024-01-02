@@ -13,7 +13,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+selected_name=$(echo "$selected" | awk -F/ '{ print $(NF-1)"-"$NF }' | tr -s '[:blank:]' '-' | tr -C '[:alnum:]-' _ |  sed 's/_$//')
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
