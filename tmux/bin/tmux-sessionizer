@@ -6,7 +6,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     # selected=$(fd --one-file-system -s -H --max-depth=3 --type=d --search-path ~/workspace --search-path ~/moseeker --search-path ~/Projects --search-path ~/.dotfiles --search-path ~/.config | fzf)
-    selected=$(zoxide query -l --exclude "$PWD" | awk -v home="$HOME" '{gsub(home, "~"); print}' | fzf --preview 'eval exa_git --git --no-user {}' | awk -v home="$HOME" '{sub(/^~/, home)};1')
+    selected=$(zoxide query -l --exclude "$PWD" | awk -v home="$HOME" '{gsub(home, "~"); print}' | fzf --preview 'eval eza --color=always --icons=auto --group-directories-first --git --no-user --no-quotes --git-repos {}' | awk -v home="$HOME" '{sub(/^~/, home)};1')
 fi
 
 if [[ -z $selected ]]; then
