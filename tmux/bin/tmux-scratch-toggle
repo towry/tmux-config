@@ -16,7 +16,8 @@ fi
 # if the scratch session doesn't exist, create it
 tmux has-session -t $scratch_session_name 2>/dev/null
 if [[ $? != 0 ]]; then
-    tmux new-session -ds "$scratch_session_name"
+    cwd="$(tmux display-message -p '#{pane_current_path}')"
+    tmux new-session -ds "$scratch_session_name" -c "$cwd"
 fi
 
 # tmux set -t "$scratch_session_name" status-right '#[default] #{?window_zoomed_flag,[Z+#{window_panes}],}#[default]'
