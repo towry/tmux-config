@@ -5,7 +5,11 @@ scratch_session_name="floats_$current_session"
 
 # if current starts with floats_, it means the popup is already open, so detach
 if [[ $current_session == floats_* ]]; then
-    tmux detach
+    if [[ "$TMUX_IS_POPUP" == "1" ]]; then
+        tmux detach
+        exit 0
+    fi
+    tmux switch-client -l
     exit 0
 fi
 
@@ -19,4 +23,4 @@ fi
 # tmux set -t "$scratch_session_name" status-left '#S #[default]'
 # tmux set -t "$scratch_session_name" status-justify left
 
-tmux display-popup -b heavy -w 88% -h 88% -S fg=colour8,bg=default -E tmux attach -t "$scratch_session_name"
+tmux display-popup -e "TMUX_IS_POPUP=1" -b heavy -w 88% -h 88% -S fg=colour8,bg=default -E tmux attach -t "$scratch_session_name"
