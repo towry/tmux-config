@@ -20,10 +20,6 @@ if [[ $? != 0 ]]; then
     tmux new-session -ds "$scratch_session_name" -c "$cwd"
 fi
 
-# tmux set -t "$scratch_session_name" status-right '#[default] #{?window_zoomed_flag,[Z+#{window_panes}],}#[default]'
-# tmux set -t "$scratch_session_name" status-left '#S #[default]'
-# tmux set -t "$scratch_session_name" status-justify left
-
 if [[ $1 == "toggle" ]]; then
     tmux switch-client -t "$scratch_session_name"
 else
