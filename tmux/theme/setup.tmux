@@ -10,7 +10,7 @@
 
 NORD_TMUX_COLOR_THEME_FILE=option.conf
 NORD_TMUX_VERSION=0.3.0
-NORD_TMUX_STATUS_CONTENT_FILE="src/nord-no-patched-font.conf"
+NORD_TMUX_STATUS_CONTENT_FILE="src/simple.conf"
 NORD_TMUX_STATUS_CONTENT_NO_PATCHED_FONT_FILE="src/nord-no-patched-font.conf"
 NORD_TMUX_STATUS_CONTENT_OPTION="@nord_tmux_show_status_content"
 NORD_TMUX_NO_PATCHED_FONT_OPTION="@nord_tmux_no_patched_font"
